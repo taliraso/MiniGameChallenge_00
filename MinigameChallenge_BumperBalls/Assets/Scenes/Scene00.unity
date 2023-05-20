@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6400bc51ac9bbfa449882c65b2fda09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1134141567}
 --- !u!4 &744975328
 Transform:
   m_ObjectHideFlags: 0
@@ -274,7 +275,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134141567}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
