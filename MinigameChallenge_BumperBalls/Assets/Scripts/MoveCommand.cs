@@ -2,48 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MoveCommand
+public class MoveCommand : MonoBehaviour
 {
-    public abstract void Execute();
-
-}
-
-public class MoveForward : MoveCommand
-{
-    public override void Execute()
+    public class MoveForward : ICommand
     {
-        Debug.Log("Testing Forward");
+        public void Execute()
+        {
+            //instantiate the player movement class 
+            //Player.PlayerMovement pm = new Player.PlayerMovement();
+            //Call the function off that class
+            //pm.ForwardMove();
+            Debug.Log("Testing Forward");
+        }
     }
-}
 
-public class MoveBack : MoveCommand
-{
-    public override void Execute()
+    public class MoveBack : ICommand
     {
-        Debug.Log("Testing Back");
+        public void Execute()
+        {
+            //Player.PlayerMovement pm = new Player.PlayerMovement();
+            //pm.BackMove();
+            Debug.Log("Testing Back");
+        }
     }
-}
 
-public class MoveLeft : MoveCommand
-{
-    public override void Execute()
+    public class MoveLeft : ICommand
     {
-        Debug.Log("Testing Left");
+        public void Execute()
+        {
+            //Player.PlayerMovement pm = new Player.PlayerMovement();
+            //pm.LeftMove();
+            Debug.Log("Testing Left");
+        }
     }
-}
 
-public class MoveRight : MoveCommand
-{
-    public override void Execute()
+    public class MoveRight : ICommand
     {
-        Debug.Log("Testing Right");
+        public void Execute()
+        {
+            //Player.PlayerMovement pm = new Player.PlayerMovement();
+            //pm.RightMove();
+            Debug.Log("Testing Right");
+        }
     }
-}
 
-public class DoNothing : MoveCommand
-{
-    public override void Execute()
+    public class DoNothing : ICommand
     {
-        Debug.Log("Testing Nothing");
+        public void Execute()
+        {
+            Debug.Log("Testing Nothing");
+        }
     }
 }

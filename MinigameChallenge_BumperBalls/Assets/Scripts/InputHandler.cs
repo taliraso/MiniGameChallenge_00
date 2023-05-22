@@ -4,40 +4,49 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-    [SerializeField] GameObject player;
-    private Rigidbody rb; 
+    //[SerializeField] GameObject player;
+    //private Rigidbody rb;
+
+    private ICommand keyW, keyA, keyS, keyD, nothing;
+
 
     private void Start()
     {
-        rb = player.GetComponent<Rigidbody>();
+        //rb = player.GetComponent<Rigidbody>();
+
+        keyW = new MoveCommand.MoveForward();
+        keyA = new MoveCommand.MoveLeft();
+        keyS = new MoveCommand.MoveBack();
+        keyD = new MoveCommand.MoveRight();
+        nothing = new MoveCommand.DoNothing();
+
     }
     void Update()
     {
-        Move();
+        Moving();
     }
 
 
-    void Move()
+    void Moving()
     {
         if (Input.GetKey(KeyCode.W))
         {
-            rb.AddForce(Vector3.forward, ForceMode.Impulse);
-            //MoveForward.Execute();
+            keyW.Execute();
             Debug.Log("move forward");
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rb.AddForce(Vector3.left, ForceMode.Impulse);
+            keyA.Execute();
             Debug.Log("move left");
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rb.AddForce(-Vector3.forward, ForceMode.Impulse);
+            keyS.Execute();
             Debug.Log("move back");
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rb.AddForce(-Vector3.left, ForceMode.Impulse);
+            keyD.Execute();
             Debug.Log("move right");
         }
         else Stationary();
@@ -45,6 +54,8 @@ public class InputHandler : MonoBehaviour
 
     void Stationary()
     {
+        nothing.Execute();
+
         Debug.Log("Stationary");
     }
 
