@@ -4,31 +4,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private Rigidbody rb;
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
+    [SerializeField] Rigidbody playerRB;
 
     public class PlayerMovement : Player
     {
         public void ForwardMove()
         {
-            rb.AddForce(Vector3.forward, ForceMode.Impulse);
+            playerRB.AddForce(Vector3.forward, ForceMode.Impulse);
         }
         public void BackMove()
         {
-            rb.AddForce(-Vector3.forward, ForceMode.Impulse);
+            playerRB.AddForce(-Vector3.forward, ForceMode.Impulse);
         }
         public void RightMove()
         {
-            rb.AddForce(-Vector3.left, ForceMode.Impulse);
+            playerRB.AddForce(-Vector3.left, ForceMode.Impulse);
         }
 
         public void LeftMove()
         {
-            rb.AddForce(Vector3.left, ForceMode.Impulse);
+            playerRB.AddForce(Vector3.left, ForceMode.Impulse);
         }
     }
 
