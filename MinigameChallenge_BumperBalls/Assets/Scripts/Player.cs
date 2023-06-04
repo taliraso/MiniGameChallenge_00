@@ -2,30 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] Rigidbody playerRB;
+    public float forceMultiplier = 20f;
 
-    public class PlayerMovement : Player
+    InputHandler _inputHandler;
+    void Start()
     {
-        public void ForwardMove()
-        {
-            playerRB.AddForce(Vector3.forward, ForceMode.Impulse);
-        }
-        public void BackMove()
-        {
-            playerRB.AddForce(-Vector3.forward, ForceMode.Impulse);
-        }
-        public void RightMove()
-        {
-            playerRB.AddForce(-Vector3.left, ForceMode.Impulse);
-        }
-
-        public void LeftMove()
-        {
-            playerRB.AddForce(Vector3.left, ForceMode.Impulse);
-        }
+        _inputHandler = new InputHandler(this);
     }
 
+    public void MoveUp()
+    {
+        playerRB.AddForce(Vector3.forward, ForceMode.Impulse);
+    }
+    public void MoveDown()
+    {
+        playerRB.AddForce(-Vector3.forward, ForceMode.Impulse);
+    }
+
+    void Update()
+    {
+        _inputHandler.HandleInput();
+    }
 
 }

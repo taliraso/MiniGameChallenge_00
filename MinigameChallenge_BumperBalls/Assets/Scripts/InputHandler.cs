@@ -4,59 +4,22 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-    //[SerializeField] GameObject player;
-    //private Rigidbody rb;
+    private Dictionary<KeyCode, ICommand> _keyCommandMapping = new Dictionary<KeyCode, ICommand>();
 
-    private ICommand keyW, keyA, keyS, keyD, nothing;
-
-
-    private void Start()
+    public InputHandler(PlayerMovement player)
     {
-        //rb = player.GetComponent<Rigidbody>();
-
-        keyW = new MoveCommand.MoveForward();
-        keyA = new MoveCommand.MoveLeft();
-        keyS = new MoveCommand.MoveBack();
-        keyD = new MoveCommand.MoveRight();
-        nothing = new MoveCommand.DoNothing();
-
-    }
-    void Update()
-    {
-        Moving();
+        _keyCommandMapping.Add(KeyCode.W, new MoveUpCommand(player));
+        _keyCommandMapping.Add(KeyCode.S, new MoveDownCommand(player));
     }
 
-
-    void Moving()
+    public void HandleInput()
     {
-        if (Input.GetKey(KeyCode.W))
+        foreach (KeyCode key in _keyCommandMapping.Keys)
         {
-            keyW.Execute();
-            Debug.Log("move forward");
+            if (Input.GetKeyDown(key))
+            {
+                _keyCommandMapping[key].Execute();
+            }
         }
-        if (Input.GetKey(KeyCode.A))
-        {
-            keyA.Execute();
-            Debug.Log("move left");
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            keyS.Execute();
-            Debug.Log("move back");
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            keyD.Execute();
-            Debug.Log("move right");
-        }
-        else Stationary();
     }
-
-    void Stationary()
-    {
-        nothing.Execute();
-
-        Debug.Log("Stationary");
-    }
-
 }
