@@ -36,3 +36,33 @@ public class MoveDownCommand : Command
         _player.MoveDown();
     }
 }
+
+public class MoveLeftCommand : Command
+{
+    private PlayerMovement _player;
+
+    public MoveLeftCommand(PlayerMovement player)
+    {
+        _player = player;
+    }
+
+    public override void Execute()
+    {
+        _player.MoveLeft();
+    }
+}
+
+public class MoveRightCommand : Command
+{
+    private PlayerMovement _player;
+
+    public MoveRightCommand(PlayerMovement player)
+    {
+        _player = player;
+    }
+
+    public override void Execute()
+    {
+        _player.MoveRight();
+    }
+}
