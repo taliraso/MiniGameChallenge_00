@@ -21,6 +21,15 @@ public class PlayerMovement : MonoBehaviour
         playerRB.AddForce(-Vector3.forward * forceMultiplier);
     }
 
+    public void MoveLeft()
+    {
+        playerRB.AddForce(Vector3.left * forceMultiplier);
+    }
+    public void MoveRight()
+    {
+        playerRB.AddForce(-Vector3.left * forceMultiplier);
+    }
+
     void Update()
     {
         _inputHandler.HandleInput();
