@@ -19,6 +19,7 @@ public class MoveUpCommand : Command
     public override void Execute()
     {
         _player.MoveUp();
+
     }
 }
 

@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
+    
     [SerializeField] Rigidbody playerRB;
+    [SerializeField] GameObject character;
+    Component animator;
     public float forceMultiplier = 20f;
+
+
 
     InputHandler _inputHandler;
     void Start()
     {
         _inputHandler = new InputHandler(this);
+        animator = character.GetComponent<Animator>();
     }
 
     public void MoveUp()
@@ -33,6 +39,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         _inputHandler.HandleInput();
+
     }
+
+
 }
 

@@ -21,6 +21,7 @@ public class InputHandler : MonoBehaviour
             if (Input.GetKey(key))
             {
                 _keyCommandMapping[key].Execute();
+
             }
         }
     }
