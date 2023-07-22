@@ -21,31 +21,9 @@ public class AnimationStateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        bool isForward = animator.GetBool("isForward");
-        bool isBackward = animator.GetBool("isBackward");
-        bool forwardPressed = Input.GetKey("w");
-        bool backwardPressed = Input.GetKey("s");
-
         gameObject.transform.position = ball.transform.position + new Vector3(0, playerY, 0);
 
-        PlayerAnimationStates(isForward, isBackward, forwardPressed, backwardPressed);
         TurnPlayer();
-    }
-
-    void PlayerAnimationStates(bool isForward, bool isBackward, bool forwardPressed, bool backwardPressed)
-    {
-        if (!isForward && forwardPressed)
-        {
-            animator.SetBool("isForward", true);
-        }
-
-        if (isForward && !forwardPressed)
-        {
-            animator.SetBool("isForward", false);
-        }
-
-
     }
 
     void TurnPlayer()
